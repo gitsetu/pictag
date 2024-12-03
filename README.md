@@ -1,16 +1,15 @@
 # pictag
-Tag a picture game
+### Tag a picture game
 
 IoT Project (Proposal)
 
 #### Student Name: Pedro Royo    Student ID: 11704831
 
 ###### Release 1
-When pressing the button on the SenseHat a camera conected to the Raspberry Pi scans a drawing.  
-The led lights change to red; no more pictures can be sent.  
+Point the camera conected to the Raspberry Pi to a drawing and take a picture by pressing the button on the SenseHat.  
+The led lights then change to red, no more pictures can be taken.  
 The image gets uploaded to a website, and a notification asking to tag the image is sent: "New drawing! It is a..."  
 Once tagged the led goes back to green and a new picture can be sent.  
-
 
 ###### Release 2
 A list of images with their tags is stored in a file.  
@@ -21,7 +20,6 @@ Multiplayer.
 
 ###### Release 4
 Camera recognises writing.  
-
 
 ## Tools, Technologies and Equipment
 Raspberry Pi, Camera, Sense Hat (button and leds)  
