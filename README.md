@@ -5,6 +5,8 @@ IoT Project (Proposal)
 
 #### Student Name: Pedro Royo    Student ID: 11704831
 
+![alt text](https://github.com/gitsetu/pictag/blob/master/iot-proposal.jpg?raw=true)
+
 
 ###### Release 1
 Point the camera conected to the Raspberry Pi to a drawing and take a picture by pressing the button on the SenseHat.  
