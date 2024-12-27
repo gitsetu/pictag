@@ -42,7 +42,8 @@ mqttc.connect(URL.hostname, URL.port)
 mqttc.loop_start()
 
 target_macs = [
-        "28:FF:3C:8F:93:B1"   # ATV
+        "7C:61:93:84:15:ED",  # htc
+        "2C:BE:08:4C:24:C3"   # iphone
     ]
 
 # Publish a message to temp every 15 seconds
@@ -52,3 +53,4 @@ while True:
     time.sleep(15)
     devices_found=find_mac_addresses(target_macs, "192.168.8.0/24")
     mqttc.publish(f"{BASE_TOPIC}/devices/macs",str(devices_found))
+    time.sleep(15)

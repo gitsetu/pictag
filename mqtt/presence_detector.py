@@ -15,7 +15,8 @@ if __name__ == "__main__":
     # Example list of target MAC addresses to search for on the network
     # Replace with actual MAC addresses you expect to find
     target_macs = [
-        "28:FF:3C:8F:93:B1"   # ATV
+        "28:FF:3C:8F:93:B1",  # ATV
+        "7C:61:93:84:15:ED"   # htc
     ]
 
     print("Scanning network...")
