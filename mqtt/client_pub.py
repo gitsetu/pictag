@@ -43,7 +43,8 @@ mqttc.loop_start()
 
 target_macs = [
         "7C:61:93:84:15:ED",  # htc
-        "2C:BE:08:4C:24:C3"   # iphone
+        "2C:BE:08:4C:24:C3",  # iphone
+        "74:38:B7:00:EF:7C"   # canon
     ]
 
 # Publish a message to temp every 15 seconds
