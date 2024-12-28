@@ -3,7 +3,7 @@
 import paho.mqtt.client as mqtt
 from urllib.parse import urlparse
 import time
-from env_data import get_environmental_data
+from led_data import get_environmental_data
 from presence_detector import find_mac_addresses
 
 # parse mqtt url for connection details. DON'T FORGET TO UPDATE YOUR_ID TO A UNIQUE ID
@@ -43,7 +43,8 @@ mqttc.loop_start()
 
 target_macs = [
         "7C:61:93:84:15:ED",  # htc
-        "2C:BE:08:4C:24:C3",  # iphone
+        # "2C:BE:08:4C:24:00",  # iphone
+        # "28:FF:3C:8F:93:B1",  # ATV
         "74:38:B7:00:EF:7C"   # canon
     ]
 
@@ -51,7 +52,9 @@ target_macs = [
 while True:
     msgFromClient = get_environmental_data(DEVICE_ID)
     mqttc.publish(f"{BASE_TOPIC}/environment",str(msgFromClient))
-    time.sleep(15)
+    time.sleep(20)
     devices_found=find_mac_addresses(target_macs, "192.168.8.0/24")
-    mqttc.publish(f"{BASE_TOPIC}/devices/macs",str(devices_found))
-    time.sleep(15)
+    # devices_found=find_mac_addresses(len(target_macs), "192.168.8.0/24")
+    if len(devices_found) > 0:
+        mqttc.publish(f"{BASE_TOPIC}/devices/macs",str((len(devices_found))))
+        time.sleep(20)
