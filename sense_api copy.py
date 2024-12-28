@@ -3,8 +3,6 @@
 from flask import Flask, request, render_template
 from flask_cors import CORS
 from sense_hat import SenseHat
-from led_status import get_led
-from set_led import set_led
 
 sense = SenseHat()
 deviceID="device1"
@@ -25,29 +23,30 @@ def current_environment():
 
 @app.route('/sensehat/light',methods=['GET'])
 def light_get():
-    state=get_led()
-    ledlight=state["ledlight"]
-    ledcode=state["ledcode"]
-    msg = {"deviceID": deviceID,"ledlight":ledlight,"ledcode":ledcode}
-    return str(msg)+"\n"
-    #return render_template('status.html', ledlight=ledlight, ledcode=ledcode)
+    #check top left pixel value(==0 - off, >0 - on) 
+    print(sense.get_pixel(0, 0)) 
+    if sense.get_pixel(0, 0)[0] == 0:
+        return '{"state":"off"}'
+    else:
+        return '{"state":"on"}'
 
 @app.route('/sensehat/light',methods=['POST'])
 def light_post():
-    ledstate=request.args.get('state')
+    state=request.args.get('state')
     print (state)
-    set_led(state)
-    return '{"state":"ledstate"}'
+    if (state=="on"):
+        sense.clear(255,255,255)
+        return '{"state":"on"}'
+    else: 
+        sense.clear(0,0,0)
+        return '{"state":"off"}'
 
 @app.route('/') 
 def index():
-    celsius = round(sense.temperature, 2)
-    fahrenheit = round(1.8 * celsius + 32, 2)
+    celcius = round(sense.temperature, 2)
+    fahrenheit = round(1.8 * celcius + 32, 2)
     humidity = round(sense.humidity, 2)
-    state=get_led()
-    ledlight=state["ledlight"]
-    ledcode=state["ledcode"]
-    return render_template('status.html', celsius=celsius, fahrenheit=fahrenheit, humidity=humidity, ledlight=ledlight, ledcode=ledcode)
+    return render_template('status.html', celcius=celcius, fahrenheit=fahrenheit, humidity=humidity)
 
 #Run API on port 5000, set debug to True
 app.run(host='0.0.0.0', port=5000, debug=True)
