@@ -8,16 +8,32 @@
 </head>
 
 <body>
-    <h1>Device1 Environment Data Summary</h1>
+    <h1>Device1</h1>
+
+    <!-- <h2>Last Image</h2>
+    <img src="../../images/sensehat_image.jpg" alt="Last image" width="200" height="auto"/> -->
+
+    <h2>Control</h2>
+    <form action="camera" method="post">
+        <input type="submit" name="takephoto" value="take photo" />
+        <input type="submit" name="reject" value="reject" />
+    </form>
+
+    <h2>Tag</h2>
+    <form action="image" method="post">
+        <label for="fname">Tag the image:</label><br>
+        <input type="text" id="fname" name="fname" value="eg.house">
+        <input type="submit" name="tag" value="tag"/>
+      </form>
+
+
+    <h2>LED Lights</h2>
+    <p><strong>Light State:</strong> {{ ledlight }}</p>
+    <p><strong>LED Code:</strong> {{ ledcode }}</p>
 
     <h2>Temperature</h2>
     <p><strong>Celsius:</strong> {{ celsius }}</p>
-    <p><strong>Fahrenheit:</strong> {{ fahrenheit }}</p>
-
-    <h2>LED Lights</h2>
-    <p><strong>State:</strong> {{ ledlight }}</p>
-    <p><strong>LED Code:</strong> {{ ledcode }}</p>
-
+    
     <h2>API Description</h2>
     <p>For use by developers...</p>
     <table>

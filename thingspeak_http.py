@@ -31,7 +31,7 @@ while True:
     temperature = round(sense.get_temperature(),2)
 
     led_status = get_led()
-    led = led_status["led"]
+    ledlight = led_status["ledlight"]
     ledcode = led_status["ledcode"]
 
     print(f"Temperature: {temperature} C, Light: {ledlight}")
@@ -42,4 +42,4 @@ while True:
     send_to_thingspeak(temperature,ledcode)
 
     # Wait before the next reading (ThingSpeak recommends 15-second intervals for free accounts)
-    time.sleep(150)
+    time.sleep(15)

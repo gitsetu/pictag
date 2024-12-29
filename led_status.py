@@ -3,34 +3,34 @@ from sense_hat import SenseHat
 sense = SenseHat()
 pixel = sense.get_pixel(0, 0) #top_left_pixel
 deviceID = "deviceID"
-level = 10
+level = 5
 
 def get_led():
     #check top left pixel value(==0 - off, >0 - on) 
-    # print(pixel) 
+    print(pixel) 
 
     if (pixel[0] >= level and pixel[1] == 0 and pixel[2] == 0):
-        ledlight = "RED"
+        ledlight = "red"
         ledcode = "2"
         # return '{"state":"red"}'
     elif (pixel[0] == 0 and pixel[1] >= level and pixel[2] == 0):
-        ledlight = "GREEN"
+        ledlight = "green"
         ledcode = "3"
         # return '{"state":"green"}'
     elif (pixel[0] == 0 and pixel[1] == 0 and pixel[2] >= level):
-        ledlight = "BLUE"
+        ledlight = "blue"
         ledcode = "4"
         # return '{"state":"blue"}'
     elif (pixel[0] == 0 and pixel[1] == 0 and pixel[2] == 0):
-        ledlight = "OFF"
+        ledlight = "off"
         ledcode = "0"
         # return '{"state":"off"}'
     elif (pixel[0] == pixel[1] == pixel[2] >= level):
-        ledlight = "ON"
+        ledlight = "on"
         ledcode = "1"
         # return '{"state":"on"}'
     else: 
-        ledlight = "OTHER"
+        ledlight = "other"
         ledcode = "5"
         # return '{"state":"other"}'
     
@@ -72,6 +72,6 @@ def set_led(state):
 if __name__ == "__main__":
     # Example device ID and usage
     deviceID = "myDevice001"
-    environmental_data = light_get(deviceID)
+    led_data = get_led()
     # Print the data in JSON format for testing
-    print(data)
+    print(led_data)
