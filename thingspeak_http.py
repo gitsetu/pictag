@@ -1,7 +1,7 @@
 from sense_hat import SenseHat
 import requests
 import time
-from led_status import get_led
+from led import get_led
 
 sense = SenseHat()
 deviceID = "deviceID"

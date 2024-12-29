@@ -3,16 +3,18 @@
 from flask import Flask, request, render_template
 from flask_cors import CORS
 from sense_hat import SenseHat
-from led_status import get_led
-from set_led import set_led
+from led import *
+from capture_image import capture_image
 from upload_image import upload_image
 
 sense = SenseHat()
-deviceID="device1"
+deviceID="pi"
 #clear sensehat and intialise light_state
 sense.clear()
 sense.low_light = True
 level = 10
+
+IMAGE_PATH="../images/sensehat_image.jpg"
 
 #create Flask app instance and apply CORS
 app = Flask(__name__)
@@ -51,7 +53,8 @@ def tag_post():
 def takephoto_post():
     takephoto=request.args.get('takephoto')
     print (takephoto)
-    upload_image("../images/sensehat_image.jpg")
+    capture_image(IMAGE_PATH)
+    upload_image(IMAGE_PATH)
     sense.show_message("taking photo", text_colour=[level, 0, 0])
     return '{"takephoto":"takephoto"}' 
 

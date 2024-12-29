@@ -3,8 +3,9 @@
 import paho.mqtt.client as mqtt
 from urllib.parse import urlparse
 import time
-from led_data import get_environmental_data
+from led import get_led
 from presence_detector import find_mac_addresses
+
 
 # parse mqtt url for connection details. DON'T FORGET TO UPDATE YOUR_ID TO A UNIQUE ID
 URL = urlparse("mqtt://broker.emqx.io:1883/gitsetu/home")
@@ -50,7 +51,7 @@ target_macs = [
 
 # Publish a message to temp every 15 seconds
 while True:
-    msgFromClient = get_environmental_data(DEVICE_ID)
+    msgFromClient = get_led()
     mqttc.publish(f"{BASE_TOPIC}/environment",str(msgFromClient))
     time.sleep(15)
     devices_found=find_mac_addresses(target_macs, "192.168.8.0/24")

@@ -1,6 +1,5 @@
 import subprocess
 
-
 # Find Mac Addresses Function
 def find_mac_addresses(target_macs, ip_range="192.168.8.0/24"):
     result = subprocess.check_output(f"sudo nmap -sS {ip_range} | grep MAC", shell=True)

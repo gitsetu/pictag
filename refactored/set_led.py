@@ -29,7 +29,7 @@ def set_led(state):
 # Allow standalone testing of this module
 if __name__ == "__main__":
     # Example device ID and usage
-    state = "red"
+    state = "green"
     set_sense_light = set_led(state)
     # Print the data in JSON format for testing
     print(set_sense_light)
