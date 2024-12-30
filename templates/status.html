@@ -20,11 +20,11 @@
     </form>
 
     <h2>Tag</h2>
-    <form action="image" method="post">
-        <label for="image">Tag the image:</label><br>
-        <input type="text" id="image" name="image" value="eg.house">
-        <input type="submit" name="tag" value="tag"/>
-      </form>
+    <form action="tag" method="POST">
+        <label for="textField">Enter Text:</label>
+        <input type="text" id="textField" name="textField" required>
+        <button type="submit">Submit</button>
+    </form>
 
 
     <h2>LED Lights</h2>
@@ -39,22 +39,22 @@
     <table>
         <thead>
             <tr>
-                <th>Resource/Path</th>
-                <th>GET</th>
-                <th>POST</th>
+                <th><small>Resource/Path</small>
+                <th><small>GET</small></th>
+                <th><small>POST</small></th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>/sensehat/environment</td>
-                <td>Current environment data</td>
-                <td>Not Used</td>
+                <td><small>/sensehat/environment</small></td>
+                <td><small>Current environment data</small></td>
+                <td><small>Not Used</small></td>
             </tr>
             <tr>
-                <td>/sensehat/light</td>
-                <td>Current light state(i.e. on/off)</td>
-                <td>Change light state using status query parameter. <br>
-                    e.g. curl -X POST http://YOUR_PI_IP:5000/sensehat/light?state=on</td>
+                <td><small>/sensehat/light</small></td>
+                <td><small>Current light state(i.e. on/off)</small></td>
+                <td><small>Change light state using status query parameter. <br>
+                    e.g. curl -X POST http://YOUR_PI_IP:5000/sensehat/light?state=on</small></td>
             </tr>
         </tbody>
     </table>

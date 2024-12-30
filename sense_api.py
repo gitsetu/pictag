@@ -38,16 +38,18 @@ def light_get():
 @app.route('/sensehat/light',methods=['POST'])
 def light_post():
     ledstate=request.args.get('state')
-    print (state)
-    set_led(state)
-    return '{"state":"ledstate"}'
+    print (ledstate)
+    set_led(ledstate)
+    # return '{"state":"ledstate"}'
+    return render_template('status.html', ledlight=ledlight, ledcode=ledcode)
 
-@app.route('/image/tag',methods=['POST'])
+@app.route('/tag',methods=['POST'])
 def tag_post():
-    tag=request.args.get('tag')
-    print (tag)
-    sense.show_message("tag", text_colour=[0, level, 0])
-    return '{"tag":"tag"}'    
+    textField=request.args.get('textField')
+    print (textField)
+    sense.show_message("textField", text_colour=blue)
+    # return '{"tag":"tag"}' 
+    return render_template('status.html')   
 
 @app.route('/camera',methods=['POST'])
 def takephoto_post():
@@ -55,8 +57,9 @@ def takephoto_post():
     print (takephoto)
     capture_image(IMAGE_PATH)
     upload_image(IMAGE_PATH)
-    sense.show_message("taking photo", text_colour=[level, 0, 0])
-    return '{"takephoto":"takephoto"}' 
+    sense.show_message("photo taken", text_colour=blue)
+    # return '{"takephoto":"takephoto"}' 
+    return render_template('status.html')
 
 @app.route('/') 
 def index():

@@ -1,10 +1,10 @@
 from sense_hat import SenseHat
 
 sense = SenseHat()
-pixel = sense.get_pixel(0, 0) #top_left_pixel
+pixel = sense.get_pixel(3, 3) #pixel
 deviceID = "Pi"
 level_read = 8
-level = 10
+level = 20
 
 # Define colours
 red = (level, 0, 0)    # RGB for red

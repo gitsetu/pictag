@@ -17,7 +17,7 @@ def button_presssed(event):
         capture_image(IMAGE_PATH)
         upload_image(IMAGE_PATH)
         sense.clear()
-        sense.clear(green)
+        sense.clear(blue)
 
 sense.stick.direction_middle = button_presssed
 print("Press the middle button on the SenseHAT to capture an image.")
