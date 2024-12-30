@@ -1,6 +1,7 @@
 from sense_hat import SenseHat
 
 sense = SenseHat()
+sense.low_light = True
 pixel = sense.get_pixel(3, 3) #pixel
 deviceID = "Pi"
 level_read = 8

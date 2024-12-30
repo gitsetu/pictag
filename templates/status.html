@@ -3,15 +3,17 @@
 <html>
 
 <head>
-    <title>Device1 Environment Data</title>
+    <title>Device1 Data</title>
     <link href="https://mattduck.github.io/generic-css/css/generic-light.min.css" rel="stylesheet" type="text/css"/>
 </head>
 
 <body>
     <h1>Device1</h1>
 
-    <!-- <h2>Last Image</h2>
-    <img src="images/sensehat_image.jpg" alt="Last image" width="200" height="auto"/> -->
+    <h2>Last Image</h2>
+    <!-- <img src="../images/sensehat_image.jpg" alt="Last image" width="200" height="auto"/> -->
+    <img src="static_folder/sensehat_image.jpg" alt="Last image" width="200" height="auto"/>
+
 
     <h2>Control</h2>
     <form action="camera" method="post">
@@ -19,15 +21,15 @@
         <!-- <input type="submit" name="reject" value="Reject" /> -->
     </form>
 
-    <form action="reject" method="post">
-        <input type="submit" name="reject" value="Reject" />
+    <form action="delete" method="post">
+        <input type="submit" name="delete" value="Delete Image" />
     </form>
 
     <h2>Tag</h2>
     <form action="tag" method="POST">
-        <label for="textField">Enter Text:</label>
-        <input type="text" id="textField" name="textField" required>
-        <button type="submit">Submit</button>
+        <label for="tagtext">Enter tag for image:</label>
+        <input type="text" id="tagtext" name="tagtext" required>
+        <button type="submit">Save Image</button>
     </form>
 
 

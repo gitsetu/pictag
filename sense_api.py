@@ -6,25 +6,26 @@ from sense_hat import SenseHat
 from led import *
 from capture_image import capture_image
 from upload_image import upload_image
-from move_image import move_tagged_image
-from pathlib import Path
-import os
+from file_action import *
+#from pathlib import Path
+#import os
 import time
 
 
-sense = SenseHat()
-deviceID="pi"
+#sense = SenseHat()
+#deviceID="pi"
 #clear sensehat and intialise light_state
 sense.clear()
-sense.low_light = True
-level = 10
+#sense.low_light = True
+#level = 10
 
-IMAGE_PATH="images/sensehat_image.jpg"
+
 
 
 #create Flask app instance and apply CORS
 app = Flask(__name__)
 CORS(app)
+#app = Flask(static_folder=IMAGE_DIR)
 
 @app.route('/sensehat/environment',methods=['GET'])
 def current_environment():
@@ -51,10 +52,10 @@ def light_post():
 
 @app.route('/tag',methods=['POST'])
 def tag_post():
-    textField=request.args.get('textField')
-    print (textField)
-    sense.show_message("textField", text_colour=blue)
-    move_tagged_image(textField)
+    tagtext=request.args.get('tagtext')
+    print (tagtext)
+    sense.show_message("tagtext", text_colour=blue)
+    move_tagged_image(tagtext)
     # return '{"tag":"tag"}' 
     return render_template('status.html')   
 
@@ -69,13 +70,11 @@ def takephoto_post():
     return render_template('status.html')
 
 @app.route('/reject',methods=['POST'])
-def reject_post():
-    reject=request.args.get('reject')
-    print (reject)
-    if os.path.isfile(IMAGE_PATH):
-        os.remove(IMAGE_PATH)
-        #pathlib.Path(IMAGE_PATH).unlink()
-        sense.show_message("photo deleted", text_colour=red)
+def delete_post():
+    delete=request.args.get('delete')
+    print (delete)
+    delete_image(IMAGE_PATH)
+    sense.show_message("Photo deleted", text_colour=red)
     # return '{"takephoto":"takephoto"}' 
     return render_template('status.html')
 

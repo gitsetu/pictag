@@ -3,11 +3,12 @@ from sense_hat import SenseHat
 from upload_image import upload_image
 from time import sleep
 from led import *
+from file_action import *
 
 sense = SenseHat()
 sense.low_light = True
 
-IMAGE_PATH="../images/sensehat_image.jpg"
+#IMAGE_PATH="images/sensehat_image.jpg"
 
 def button_presssed(event):
     if event.action == "pressed":
