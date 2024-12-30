@@ -6,6 +6,9 @@ from sense_hat import SenseHat
 from led import *
 from capture_image import capture_image
 from upload_image import upload_image
+import os
+import time
+
 
 sense = SenseHat()
 deviceID="pi"
@@ -15,6 +18,12 @@ sense.low_light = True
 level = 10
 
 IMAGE_PATH="../images/sensehat_image.jpg"
+
+TAGGED_IMAGE_PATH="tagged_images/"
+
+TIMESTAMP = time.time()
+JPG_EXT=".jpg"
+SEPARATOR="_"
 
 #create Flask app instance and apply CORS
 app = Flask(__name__)
@@ -48,6 +57,10 @@ def tag_post():
     textField=request.args.get('textField')
     print (textField)
     sense.show_message("textField", text_colour=blue)
+
+    TAGGED_IMAGE_COMPLETE_PATH=f"{TAGGED_IMAGE_PATH}{TIMESTAMP}{SEPARATOR}{textField}{JPG_EXT}"
+
+    os.rename('IMAGE_PATH', 'TAGGED_IMAGE_COMPLETE_PATH')
     # return '{"tag":"tag"}' 
     return render_template('status.html')   
 
