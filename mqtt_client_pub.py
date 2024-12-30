@@ -58,8 +58,8 @@ while True:
     msgFromClient = ledlight
     mqttc.publish(f"{BASE_TOPIC}/environment",str(msgFromClient))
     time.sleep(15)
-    # devices_found=find_mac_addresses(target_macs, "192.168.8.0/24")
+    devices_found=find_mac_addresses(target_macs, "192.168.8.0/24")
     # devices_found=find_mac_addresses(len(target_macs), "192.168.8.0/24")
-    # if len(devices_found) > 0:
-    #     mqttc.publish(f"{BASE_TOPIC}/devices/macs",str((len(devices_found))))
-    #     time.sleep(15)
+    if len(devices_found) > 0:
+        mqttc.publish(f"{BASE_TOPIC}/devices/macs",str((len(devices_found))))
+        time.sleep(15)

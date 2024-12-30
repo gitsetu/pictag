@@ -55,7 +55,7 @@ def get_led():
 
 def set_led(state):
 
-    if (state=="on"):
+    if (state=="on" or state=="white"):
         sense.clear(level,level,level)
         return '{"state":"on"}'
     elif (state=="red"):

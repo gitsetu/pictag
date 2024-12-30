@@ -3,6 +3,8 @@ from time import sleep
 from sense_hat import SenseHat
 from capture_image import capture_image
 from upload_image import upload_image
+from file_action import *
+from led import *
 
 #initialise SenseHAT
 sense = SenseHat()
@@ -10,7 +12,9 @@ sense.clear()
 
 # Blynk authentication token
 BLYNK_AUTH = 'PnlqOi5Q8VpCODKyBh0esEggZqNnAI-9'
-IMAGE_PATH="../images/sensehat_image.jpg"
+#IMAGE_PATH="../images/sensehat_image.jpg"
+# PATH gets imported from file_action
+
 # Initialise the Blynk instance
 blynk = BlynkLib.Blynk(BLYNK_AUTH)
 
@@ -21,7 +25,7 @@ def handle_v1_write(value):
     print(f'Current button value: {button_value}')
     
     if button_value=="1":
-        sense.clear(255,255,255)
+        sense.clear(white)
         capture_image(IMAGE_PATH)
         result = upload_image(IMAGE_PATH)
         

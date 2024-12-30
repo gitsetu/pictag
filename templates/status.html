@@ -26,14 +26,40 @@
     </form>
 
     <h2>Tag</h2>
-    <form action="tag" method="POST">
-        <label for="tagtext">Enter tag for image:</label>
+    <form action="tag" method="post">
+        <label for="tagtext">Enter tag:</label>
         <input type="text" id="tagtext" name="tagtext" required>
         <input type="submit" name="tag" value="Apply Tag & Save Image"></input>
     </form>
 
 
     <h2>LED Lights</h2>
+
+    <h4>Set Lights</h4>
+    <form action="sensehat/light" method="post">
+        <label>
+            <input type="radio" name="state" value="on">
+            On
+        </label><br>
+        <label>
+            <input type="radio" name="state" value="off">
+            Off
+        </label><br>
+        <label>
+            <input type="radio" name="state" value="red">
+            Red
+        </label><br>
+        <label>
+            <input type="radio" name="state" value="green">
+            Green
+        </label><br>
+        <label>
+            <input type="radio" name="state" value="blue">
+            Blue
+        </label><br><br>
+        <input type="submit" value="Submit">
+    </form>
+
     <p><strong>Light State:</strong> {{ ledlight }}</p>
     <p><strong>LED Code:</strong> {{ ledcode }}</p>
 

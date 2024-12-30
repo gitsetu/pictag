@@ -11,15 +11,12 @@ from file_action import *
 #import os
 import time
 
-
 #sense = SenseHat()
 #deviceID="pi"
 #clear sensehat and intialise light_state
 sense.clear()
 #sense.low_light = True
 #level = 10
-
-
 
 
 #create Flask app instance and apply CORS
@@ -44,11 +41,12 @@ def light_get():
 
 @app.route('/sensehat/light',methods=['POST'])
 def light_post():
-    ledstate=request.args.get('state')
+    ledstate=request.form.get('state')
     print (ledstate)
     set_led(ledstate)
     # return '{"state":"ledstate"}'
-    return render_template('status.html', ledlight=ledlight, ledcode=ledcode)
+    return render_template('status.html', ledlight=ledstate)
+    #return render_template('status.html') 
 
 @app.route('/tag',methods=['POST'])
 def tag_post():
@@ -56,7 +54,7 @@ def tag_post():
     print (tagtext)
     sense.show_message(tagtext, text_colour=blue)
     move_tagged_image(tagtext)
-    return "Tag applied!"  # return a response 
+    #return "Tag applied" 
     return render_template('status.html')   
 
 @app.route('/camera',methods=['POST'])
