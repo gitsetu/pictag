@@ -52,11 +52,11 @@ def light_post():
 
 @app.route('/tag',methods=['POST'])
 def tag_post():
-    tagtext=request.args.get('tagtext')
+    tagtext=request.form.get('tagtext')
     print (tagtext)
-    sense.show_message("tagtext", text_colour=blue)
+    sense.show_message(tagtext, text_colour=blue)
     move_tagged_image(tagtext)
-    # return '{"tag":"tag"}' 
+    return "Tag applied!"  # return a response 
     return render_template('status.html')   
 
 @app.route('/camera',methods=['POST'])
@@ -69,12 +69,12 @@ def takephoto_post():
     # return '{"takephoto":"takephoto"}' 
     return render_template('status.html')
 
-@app.route('/reject',methods=['POST'])
+@app.route('/delete',methods=['POST'])
 def delete_post():
     delete=request.args.get('delete')
     print (delete)
     delete_image(IMAGE_PATH)
-    sense.show_message("Photo deleted", text_colour=red)
+    sense.show_message("Deleting", text_colour=red)
     # return '{"takephoto":"takephoto"}' 
     return render_template('status.html')
 

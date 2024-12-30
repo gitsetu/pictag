@@ -2,20 +2,18 @@ import time
 import os
 from pathlib import Path
 
-
-IMAGE_DIR="images/"
-IMAGE_PATH="images/sensehat_image.jpg"
-TAGGED_IMAGE_DIR="images_tagged/"
-
-
+IMAGE_DIR="static/images/"
+IMAGE_PATH="static/images/sensehat_image.jpg"
+TAGGED_IMAGE_DIR="static/images_tagged/"
 
 def move_tagged_image(tag):
     PREFIX="picam_"
     TIMESTAMP = int(time.time())
     SEPARATOR="_"
     EXT=".jpg"
+    TAG=tag
 
-    TAGGED_IMAGE_FILENAME=f"{PREFIX}{TIMESTAMP}{SEPARATOR}{tag}{EXT}"
+    TAGGED_IMAGE_FILENAME=f"{PREFIX}{TIMESTAMP}{SEPARATOR}{TAG}{EXT}"
     TAGGED_IMAGE_COMPLETE_PATH=f"{TAGGED_IMAGE_DIR}{TAGGED_IMAGE_FILENAME}"
 
     # Rename / move current file to destination
